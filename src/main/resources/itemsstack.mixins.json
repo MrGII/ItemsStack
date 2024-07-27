@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "github.mrgii.itemsstack.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "InventoryMixin",
+    "ItemEntityMixin",
+    "ItemStackMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

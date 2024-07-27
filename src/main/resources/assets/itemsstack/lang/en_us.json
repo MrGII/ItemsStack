@@ -1,0 +1,9 @@
+{
+  "text.config.items-stack-size-config.title": "Items Stack Config",
+
+  "text.config.items-stack-size-config.option.items": "Items",
+  "text.config.items-stack-size-config.option.items.tooltip": "The Names of Items to change the Max Stack Size of.\nThis is the Item's Id, without the 'minecraft:' (or '<modname>:' for mod items),\nevery _ is replaced with a space and the first letter of each word is capitalized.\nEach Item needs to have a matching entry in Max Stack Sizes.",
+
+  "text.config.items-stack-size-config.option.maxStackSizes": "Max Stack Sizes",
+  "text.config.items-stack-size-config.option.maxStackSizes.tooltip": "The Max Stack Sizes of each Item in Items.\nThis should be a positive integer.\nThe Max Stack Size is applied to the Item in the same place in Items."
+}

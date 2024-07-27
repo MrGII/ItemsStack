@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "itemsstack",
+	"version": "${version}",
+	"name": "Items Stack",
+	"description": "Allows to change items stack sizes.",
+	"authors": [
+		"MrGII"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/itemsstack",
+		"issues": "https://github.com/MrGII/ItemsStack/issues",
+		"sources": "https://github.com/MrGII/ItemsStack"
+	},
+	"license": "MIT License",
+	"icon": "assets/itemsstack/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"github.mrgii.itemsstack.ItemsStack"
+		],
+		"client": [
+			"github.mrgii.itemsstack.ItemsStackClient"
+		]
+	},
+	"mixins": [
+		"itemsstack.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
