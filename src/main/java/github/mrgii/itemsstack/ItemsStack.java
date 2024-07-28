@@ -13,6 +13,6 @@ public class ItemsStack implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ItemsStackSizeModifier.ModifyPotionStackSize(CONFIG.items(), CONFIG.maxStackSizes());
+		ItemsStackSizeModifier.ModifyItemStackSize(CONFIG.items(), CONFIG.maxStackSizes());
 	}
 }

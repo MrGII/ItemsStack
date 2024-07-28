@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemsStackSizeModifier {
-    public static void ModifyPotionStackSize(List<String> itemNames, List<Integer> maxStackSizes) {
+    public static void ModifyItemStackSize(List<String> itemNames, List<Integer> maxStackSizes) {
         Map<String, Integer> itemToMaxStackSize = createItemToStackSizeMap(itemNames, maxStackSizes);
         ItemsStack.LOGGER.info("Changing stack size of minecraft potions.");
         for (Item item : Registries.ITEM) {
