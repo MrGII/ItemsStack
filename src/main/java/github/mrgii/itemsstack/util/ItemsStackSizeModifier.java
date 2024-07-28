@@ -16,7 +16,7 @@ public class ItemsStackSizeModifier {
         ItemsStack.LOGGER.info("Changing stack size of minecraft potions.");
         for (Item item : Registries.ITEM) {
             String name = item.getName().getString();
-            if (itemNames.contains(name)) {
+            if (itemToMaxStackSize.containsKey(name)) {
                 ((ItemAccessor) item).setComponents(ComponentMap.of(item.getComponents(), ComponentMap.builder().add(DataComponentTypes.MAX_STACK_SIZE, itemToMaxStackSize.get(name)).build()));
             }
         }
@@ -24,7 +24,7 @@ public class ItemsStackSizeModifier {
 
     private static Map<String, Integer> createItemToStackSizeMap(List<String> itemNames, List<Integer> maxStackSizes) {
         Map<String, Integer> itemToMaxStackSize = new java.util.HashMap<>(Map.of());
-        for (int i = 0; i < itemNames.size(); i++) {
+        for (int i = 0; i < Math.min(itemNames.size(), maxStackSizes.size()); i++) {
             itemToMaxStackSize.put(itemNames.get(i), maxStackSizes.get(i));
         }
         return itemToMaxStackSize;
