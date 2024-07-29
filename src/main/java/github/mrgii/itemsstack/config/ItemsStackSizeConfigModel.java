@@ -8,11 +8,15 @@ import java.util.List;
 @Modmenu(modId = "itemsstack")
 @Config(name = "items-stack-size-config", wrapperName = "ItemsStackSizeConfig")
 public class ItemsStackSizeConfigModel {
-    @RestartRequired
     @Sync(SyncMode.OVERRIDE_CLIENT)
     public List<String> items = List.of();
 
-    @RestartRequired
     @Sync(SyncMode.OVERRIDE_CLIENT)
     public List<Integer> maxStackSizes = List.of();
+
+    @Sync(SyncMode.OVERRIDE_CLIENT)
+    public List<String> itemTags = List.of();
+
+    @Sync(SyncMode.OVERRIDE_CLIENT)
+    public List<Integer> maxTagStackSizes = List.of();
 }
