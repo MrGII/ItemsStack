@@ -24,6 +24,5 @@ Open the config screen/file (if not using through modmenu the file name should b
 	]
 }
 ```
-notice that after any change, such as adding/removing and item or changing a stack size the game must be restarted for the changes to take effect.
 
 This mod is intended to be used as client and server though it has limited compatibility for server only (it works only in survival and then some features may still not work).
