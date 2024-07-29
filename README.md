@@ -7,7 +7,6 @@ Open the config screen/file (if not using through modmenu the file name should b
 {
 	"items": [
 		"minecraft:potion",
-		"minecraft:oak_boat",
 		"minecraft:stone"
 	],
 	"maxStackSizes": [
