@@ -7,8 +7,11 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ItemEntity.class)
 public class ItemEntityMixin {
-    @ModifyExpressionValue(method = "Lnet/minecraft/entity/ItemEntity;merge(Lnet/minecraft/entity/ItemEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)V", at = @At(value = "CONSTANT", args = "intValue=64"))
-    private static int replaceCodec(int orig) {
+    @ModifyExpressionValue(
+            method = "Lnet/minecraft/entity/ItemEntity;merge(Lnet/minecraft/entity/ItemEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)V",
+            at = @At(value = "CONSTANT", args = "intValue=64")
+    )
+    private static int replaceDroppedItemStackLimit(int orig) {
         return Integer.MAX_VALUE;
     }
 }

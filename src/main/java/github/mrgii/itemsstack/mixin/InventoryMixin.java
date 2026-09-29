@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(Inventory.class)
 public interface InventoryMixin {
     @ModifyExpressionValue(method = "getMaxCountPerStack", at = @At(value = "CONSTANT", args="intValue=99"))
-    private int changeMaxSlotStackSize(int orig) {
+    private int replaceSlotItemStackLimit(int orig) {
         return Integer.MAX_VALUE;
     }
 }

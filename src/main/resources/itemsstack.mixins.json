@@ -7,6 +7,9 @@
     "ItemEntityMixin",
     "ItemStackMixin"
   ],
+  "client": [
+    "client.DrawContextMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

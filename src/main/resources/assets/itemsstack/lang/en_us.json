@@ -1,13 +1,33 @@
 {
-  "text.config.items-stack-size-config.title": "Items Stack Config",
+  "command.itemsstack.help.title": "Items Stack commands:",
+  "command.itemsstack.help.set": "/itemsstack set <item|#tag> <count> - Set or replace a stack size rule.",
+  "command.itemsstack.help.remove": "/itemsstack remove <item|#tag> - Remove that exact item or tag rule.",
+  "command.itemsstack.help.reset": "/itemsstack reset <item|#tag> - Force that item or tag back to its default stack size.",
+  "command.itemsstack.help.clear": "/itemsstack clear - Remove all stack size rules.",
+  "command.itemsstack.help.reload": "/itemsstack reload - Discard unsaved changes and reload the config from disk.",
+  "command.itemsstack.help.save": "/itemsstack save - Save the current config to disk.",
+  "command.itemsstack.help.list": "/itemsstack list [page] or /itemsstack list <items|tags> [page] - List configured rules.",
+  "command.itemsstack.help.list_page_size": "/itemsstack list size [count] - Show or set how many rules are displayed per page for this session.",
 
-  "text.config.items-stack-size-config.option.items": "Items",
-  "text.config.items-stack-size-config.option.items.tooltip": "The ids of Items to change the Max Stack Size of.\nEach Item needs to have a matching entry in Max Stack Sizes.",
-  "text.config.items-stack-size-config.option.maxStackSizes": "Max Stack Sizes",
-  "text.config.items-stack-size-config.option.maxStackSizes.tooltip": "The Max Stack Sizes of each Item in Items.\nThis should be a positive integer.\nThe Max Stack Size is applied to the Item at the same place in Items.",
+  "command.itemsstack.set.success": "Set %s max stack size to %d",
+  "command.itemsstack.remove.success": "Removed %d rule(s) for %s",
+  "command.itemsstack.remove.missing": "No rule exists for %s",
+  "command.itemsstack.reset.success": "Reset %s to its default stack size, affecting %d item(s)",
+  "command.itemsstack.clear.success": "Cleared %d stack size rule(s)",
+  "command.itemsstack.reload.success": "Reloaded %d stack size rule(s) from disk",
+  "command.itemsstack.save.success": "Saved %d stack size rule(s) to disk",
+  "command.itemsstack.list.header": "Items Stack %s rules - page %d/%d (%d total):",
+  "command.itemsstack.list.size.current": "Rules per page is currently set to: %d",
+  "command.itemsstack.list.size.changed": "Rules per page set to: %d",
+  "command.itemsstack.list.entry": "%s. %s",
+  "command.itemsstack.list.empty": "No %s stack size rules are configured",
+  "command.itemsstack.list.invalid_page": "Page %d does not exist. Last page is %d",
 
-  "text.config.items-stack-size-config.option.itemTags": "Item Tags",
-  "text.config.items-stack-size-config.option.itemTags.tooltip": "The ids of Item Tags to change the Max Stack Size of.\nEach Item Tag needs to have a matching entry in Max Tag Stack Sizes.\nItems that are both part of an Item Tag in this list and are in the Items list\nwill get the value assigned to them from the Items list",
-  "text.config.items-stack-size-config.option.maxTagStackSizes": "Max Tag Stack Sizes",
-  "text.config.items-stack-size-config.option.maxTagStackSizes.tooltip": "The Max Stack Sizes of each Item Tag in Item Tags.\nThis should be a positive integer.\nThe Max Stack Size is applied to the Item Tag at the same place in Item Tags."
+  "command.itemsstack.list.filter.all": "all",
+  "command.itemsstack.list.filter.items": "item",
+  "command.itemsstack.list.filter.tags": "tag",
+
+  "text.config.items-stack-size-config.title": "Items Stack",
+  "text.config.items-stack-size-config.option.overrides": "Stack Size Overrides",
+  "text.config.items-stack-size-config.option.overrides.tooltip": "Use item=count or #tag=count. Exact item rules always override tag rules.\nAmong rules of the same type, later rules override earlier ones.\nChanges are applied immediately; use /itemsstack save to save them to disk."
 }
