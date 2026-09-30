@@ -1,6 +1,5 @@
 package github.mrgii.itemsstack.mixin.client;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
