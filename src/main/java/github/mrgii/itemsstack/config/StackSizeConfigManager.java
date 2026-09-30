@@ -101,11 +101,37 @@ public final class StackSizeConfigManager {
         return removed;
     }
 
-    public static int clearRules() {
-        int removed = ItemsStack.CONFIG.overrides().size();
+    public static int clearRules(RuleFilter filter) {
+        List<String> rules = new ArrayList<>(ItemsStack.CONFIG.overrides());
+
+        if (filter == RuleFilter.ALL) {
+            int removed = rules.size();
+
+            if (removed != 0) {
+                ItemsStack.CONFIG.overrides(List.of());
+            }
+
+            return removed;
+        }
+
+        int oldSize = rules.size();
+
+        rules.removeIf(rule -> {
+            String selector = getRuleSelector(rule);
+
+            if (selector == null) {
+                selector = rule.trim();
+            }
+
+            boolean isTag = selector.startsWith("#");
+
+            return (filter == RuleFilter.TAGS) == isTag;
+        });
+
+        int removed = oldSize - rules.size();
 
         if (removed != 0) {
-            ItemsStack.CONFIG.overrides(List.of());
+            ItemsStack.CONFIG.overrides(List.copyOf(rules));
         }
 
         return removed;
