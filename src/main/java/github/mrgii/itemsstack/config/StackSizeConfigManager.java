@@ -54,23 +54,23 @@ public final class StackSizeConfigManager {
         TAGS
     }
 
+    private static RuleFilter getRuleType(String rule) {
+        String selector = getRuleSelector(rule);
+
+        if (selector == null)
+            selector = rule.trim();
+
+        return selector.startsWith("#") ? RuleFilter.TAGS : RuleFilter.ITEMS;
+    }
+
+    private static boolean matchesFilter(String rule, RuleFilter filter) {
+        return filter == RuleFilter.ALL
+                || getRuleType(rule) == filter;
+    }
+
     public static List<String> getRules(RuleFilter filter) {
         return ItemsStack.CONFIG.overrides().stream()
-                .filter(rule -> {
-                    if (filter == RuleFilter.ALL) {
-                        return true;
-                    }
-
-                    String selector = getRuleSelector(rule);
-
-                    if (selector == null) {
-                        selector = rule.trim();
-                    }
-
-                    boolean isTag = selector.startsWith("#");
-
-                    return (filter == RuleFilter.TAGS) == isTag;
-                })
+                .filter(rule -> matchesFilter(rule, filter))
                 .toList();
     }
 
@@ -103,30 +103,9 @@ public final class StackSizeConfigManager {
 
     public static int clearRules(RuleFilter filter) {
         List<String> rules = new ArrayList<>(ItemsStack.CONFIG.overrides());
-
-        if (filter == RuleFilter.ALL) {
-            int removed = rules.size();
-
-            if (removed != 0) {
-                ItemsStack.CONFIG.overrides(List.of());
-            }
-
-            return removed;
-        }
-
         int oldSize = rules.size();
 
-        rules.removeIf(rule -> {
-            String selector = getRuleSelector(rule);
-
-            if (selector == null) {
-                selector = rule.trim();
-            }
-
-            boolean isTag = selector.startsWith("#");
-
-            return (filter == RuleFilter.TAGS) == isTag;
-        });
+        rules.removeIf(rule -> matchesFilter(rule, filter));
 
         int removed = oldSize - rules.size();
 

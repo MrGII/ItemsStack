@@ -3,10 +3,10 @@
   "command.itemsstack.help.set": "/itemsstack set <item|#tag> <count> - Set or replace a stack size rule.",
   "command.itemsstack.help.remove": "/itemsstack remove <item|#tag> - Remove that exact item or tag rule.",
   "command.itemsstack.help.reset": "/itemsstack reset <item|#tag> - Force that item or tag back to its default stack size.",
-  "command.itemsstack.help.clear": "/itemsstack clear [items|tags] - Remove all stack size rules.",
+  "command.itemsstack.help.clear": "/itemsstack clear [items|tags] - Remove all matching stack size rules.",
   "command.itemsstack.help.reload": "/itemsstack reload - Discard unsaved changes and reload the config from disk.",
   "command.itemsstack.help.save": "/itemsstack save - Save the current config to disk.",
-  "command.itemsstack.help.list": "/itemsstack list [items|tags] [page] - List configured rules.",
+  "command.itemsstack.help.list": "/itemsstack list [items|tags] [page] - List all matching stack size rules.",
   "command.itemsstack.help.list_page_size": "/itemsstack list size [count] - Show or set how many rules are displayed per page for this session.",
 
   "command.itemsstack.set.success": "Set %s max stack size to %s",
