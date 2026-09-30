@@ -26,9 +26,9 @@ public abstract class DrawContextMixin {
             int x,
             int y,
             @Nullable String countOverride,
-            CallbackInfo ci,
-            @Local(name = "string") String string
+            CallbackInfo ci
     ) {
+        String string = String.valueOf(stack.getCount());
         if (countOverride != null || string.length() <= 2) {
             return;
         }
