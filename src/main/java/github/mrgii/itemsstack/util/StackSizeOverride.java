@@ -46,10 +46,8 @@ public final class StackSizeOverride {
     }
 
     private static boolean hasExplicitMaxStackSize(ItemStack stack) {
-        // null means this stack did not explicitly change this component in any way,
-        // present optional means modified value and empty optional means removed component.
-        return stack.getComponentsPatch()
-                .get(DataComponents.MAX_STACK_SIZE) != null;
+        return stack.getComponentsPatch().entrySet().stream()
+                .anyMatch(entry -> entry.getKey() == DataComponents.MAX_STACK_SIZE);
     }
 
     public static OptionalInt getConfiguredMaxCount(ItemStack stack) {
