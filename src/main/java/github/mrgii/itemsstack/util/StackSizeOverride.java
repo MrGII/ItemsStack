@@ -1,14 +1,13 @@
 package github.mrgii.itemsstack.util;
 
 import github.mrgii.itemsstack.ItemsStack;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.OptionalInt;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public final class StackSizeOverride {
     private static Map<Item, Integer> itemOverrides = Map.of();
@@ -35,7 +34,7 @@ public final class StackSizeOverride {
                 ItemsStack.LOGGER.error(
                         "Invalid max stack size {} for item {}",
                         entry.getValue(),
-                        Registries.ITEM.getId(entry.getKey())
+                        BuiltInRegistries.ITEM.getKey(entry.getKey())
                 );
                 continue;
             }
@@ -47,10 +46,8 @@ public final class StackSizeOverride {
     }
 
     private static boolean hasExplicitMaxStackSize(ItemStack stack) {
-        // null means this stack did not explicitly change this component in any way,
-        // present optional means modified value and empty optional means removed component.
-        return stack.getComponentChanges()
-                .get(DataComponentTypes.MAX_STACK_SIZE) != null;
+        return stack.getComponentsPatch().entrySet().stream()
+                .anyMatch(entry -> entry.getKey() == DataComponents.MAX_STACK_SIZE);
     }
 
     public static OptionalInt getConfiguredMaxCount(ItemStack stack) {
