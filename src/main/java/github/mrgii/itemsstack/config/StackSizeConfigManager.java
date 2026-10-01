@@ -3,17 +3,16 @@ package github.mrgii.itemsstack.config;
 import github.mrgii.itemsstack.ItemsStack;
 import github.mrgii.itemsstack.util.StackSizeOverride;
 import io.wispforest.owo.config.Option;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 
 public final class StackSizeConfigManager {
     private StackSizeConfigManager() {}
@@ -212,7 +211,7 @@ public final class StackSizeConfigManager {
             return;
         }
 
-        Registries.ITEM.getEntry(identifier).ifPresentOrElse(
+        BuiltInRegistries.ITEM.get(identifier).ifPresentOrElse(
                 itemRef -> {
                     Item item = itemRef.value();
                     itemOverrides.put(item, value.resolve(item));
@@ -235,11 +234,11 @@ public final class StackSizeConfigManager {
             return;
         }
 
-        TagKey<Item> tag = TagKey.of(RegistryKeys.ITEM, identifier);
+        TagKey<Item> tag = TagKey.create(Registries.ITEM, identifier);
 
         boolean found = false;
 
-        for (RegistryEntry<Item> entry : Registries.ITEM.iterateEntries(tag)) {
+        for (Holder<Item> entry : BuiltInRegistries.ITEM.getTagOrEmpty(tag)) {
             Item item = entry.value();
 
             tagOverrides.put(item, value.resolve(item));
@@ -257,7 +256,7 @@ public final class StackSizeConfigManager {
 
     private record OverrideValue(boolean useDefault, int count) {
         int resolve(Item item) {
-            return useDefault ? item.getMaxCount() : count;
+            return useDefault ? item.getDefaultMaxStackSize() : count;
         }
     }
 }
