@@ -24,7 +24,7 @@ public final class ItemsStackCommands {
         CommandRegistrationCallback.EVENT.register(
                 (dispatcher, registryAccess, environment) -> dispatcher.register(
                         CommandManager.literal("itemsstack")
-                                .requires(source -> source.hasPermissionLevel(2))
+                                .requires(CommandManager.requirePermissionLevel(CommandManager.GAMEMASTERS_CHECK))
                                 .then(CommandManager.literal("set")
                                         .then(CommandManager.argument("target", RegistryEntryPredicateArgumentType.registryEntryPredicate(registryAccess, RegistryKeys.ITEM))
                                                 .then(CommandManager.argument("count", IntegerArgumentType.integer(1))
