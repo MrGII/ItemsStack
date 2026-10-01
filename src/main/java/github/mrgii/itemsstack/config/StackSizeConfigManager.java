@@ -212,8 +212,8 @@ public final class StackSizeConfigManager {
             return;
         }
 
-        Registries.ITEM.getOrEmpty(identifier).ifPresentOrElse(
-                item -> itemOverrides.put(item, value.resolve(item)),
+        Registries.ITEM.getEntry(identifier).ifPresentOrElse(
+                item -> itemOverrides.put(item.value(), value.resolve(item.value())),
                 () -> ItemsStack.LOGGER.warn(
                         "Unknown item '{}'",
                         itemName
